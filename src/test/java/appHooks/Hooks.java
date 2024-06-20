@@ -16,7 +16,7 @@ public class Hooks {
 
     @Before(order = 10)
     public void launchBrowser() {
-        String browser = "chrome"; //prop.getProperty("browser");
+        String browser = "firefox"; //prop.getProperty("browser");
         myWebdriver = new WebDriverClass();
         try {
             driver = myWebdriver.getWebDriver(browser);
