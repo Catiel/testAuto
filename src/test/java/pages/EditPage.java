@@ -1,9 +1,7 @@
 package pages;
 
-import org.openqa.selenium.By;
+import org.openqa.selenium.*;
 import base.Base;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -21,9 +19,9 @@ public class EditPage extends Base {
     private String curso = "//body/main/div/main/div[2]/div[1]/div/div[3]/button";
     private String vacio = "//body/main/div/main/p";
     private String editarCurso = "//body/main/div/main/div[1]/button";
-    private String inptTitulo = "div.MuiInputBase-root > input";
+    private String inptTitulo = ":rd:";
     private String btnGuardar = "//body/div[2]/div[3]/div/div/div/form/div[5]/div[2]/button";
-    private String error = "//*[@id=\":rk:-helper-text\"]";
+    private String error = "//*[@id=\":rd:-helper-text\"]";
 
     public void open(String url) {
         driver.get(url);
@@ -43,19 +41,27 @@ public class EditPage extends Base {
 
     public void borrarTitulo() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); // espera hasta 10 segundos
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(inptTitulo))); // espera hasta que el elemento esté visible
-        driver.findElement(By.cssSelector(inptTitulo)).sendKeys("aaaa");
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(inptTitulo))); // espera hasta que el elemento esté visible
+        WebElement titulo = driver.findElement(By.id(inptTitulo));
+        int length = titulo.getAttribute("value").length();
+        for (int i = 0; i < length; i++) {
+            titulo.sendKeys(Keys.BACK_SPACE);
+        }
     }
 
     public void clickGuardar() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); // espera hasta 10 segundos
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(btnGuardar))); // espera hasta que el botón sea clickeable
         driver.findElement(By.xpath(btnGuardar)).click();
     }
 
-    public boolean messageIsVisible() {
+    public String getErrorMessage() {
         try {
-            return driver.findElement(By.xpath(error)).isDisplayed();
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); // espera hasta 10 segundos
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(error))); // espera hasta que el mensaje de error sea visible
+            return driver.findElement(By.xpath(error)).getText();
         } catch (NoSuchElementException e) {
-            return false;
+            return null;
         }
     }
 
