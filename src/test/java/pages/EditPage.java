@@ -42,11 +42,7 @@ public class EditPage extends Base {
     public void borrarTitulo() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); // espera hasta 10 segundos
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(inptTitulo))); // espera hasta que el elemento esté visible
-        WebElement titulo = driver.findElement(By.id(inptTitulo));
-        int length = titulo.getAttribute("value").length();
-        for (int i = 0; i < length; i++) {
-            titulo.sendKeys(Keys.BACK_SPACE);
-        }
+        driver.findElement(By.id(inptTitulo)).clear();
     }
 
     public void clickGuardar() {
