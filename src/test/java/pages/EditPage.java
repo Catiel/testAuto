@@ -22,6 +22,7 @@ public class EditPage extends Base {
     private String inptTitulo = "css-1x5jdmq";
     private String btnGuardar = "css-5zrdtn";
     private String error = "css-v7esy";
+    private String inptDescripcion = "css-u36398";
 
     public void open(String url) {
         driver.get(url);
@@ -45,6 +46,12 @@ public class EditPage extends Base {
         driver.findElement(By.className(inptTitulo)).clear();
     }
 
+    public void borrarDescripcion() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); // espera hasta 10 segundos
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.className(inptDescripcion))); // espera hasta que el elemento esté visible
+        driver.findElement(By.className(inptDescripcion)).clear();
+    }
+
     public void clickGuardar() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); // espera hasta 10 segundos
         wait.until(ExpectedConditions.elementToBeClickable(By.className(btnGuardar))); // espera hasta que el botón sea clickeable
@@ -63,7 +70,11 @@ public class EditPage extends Base {
 
     public boolean isNoCoursesMessageVisible() {
         try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className(vacio)));
             return driver.findElement(By.className(vacio)).isDisplayed();
+        } catch (TimeoutException e) {
+            return true;
         } catch (NoSuchElementException e) {
             return false;
         }

@@ -20,7 +20,7 @@ public class Edit {
     @And("El usuario tiene al menos un curso creado")
     public void elUsuarioTieneAlMenosUnCursoCreado() {
         if (editPage.isNoCoursesMessageVisible()) {
-            new AssertionError("No se encontró ningún curso");
+            throw new AssertionError("No se encontró ningún curso");
         }
     }
 
@@ -48,5 +48,10 @@ public class Edit {
     public void elSistemaMuestraUnMensajeDeError(String mensajeEsperado) {
         String mensajeActual = editPage.getErrorMessage();
         Assert.assertEquals("El mensaje de error no es el esperado", mensajeEsperado, mensajeActual);
+    }
+
+    @And("El usuario borra el contenido del campo descripcion")
+    public void elUsuarioBorraElContenidoDelCampoDescripcion() {
+        editPage.borrarDescripcion();
     }
 }
