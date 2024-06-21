@@ -17,7 +17,6 @@ public class EditPage extends Base {
 
     //localizacion de elementos
     private String curso = "//body/main/div/main/div[2]/div[1]/div/div[3]/button";
-    private String vacio = "css-68nmpm";
     private String editarCurso = "//body/main/div/main/div[1]/button";
     private String inptTitulo = "css-1x5jdmq";
     private String btnGuardar = "css-5zrdtn";
@@ -29,8 +28,6 @@ public class EditPage extends Base {
     }
 
     public void abrirCurso() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20)); // espera hasta 10 segundos
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(curso))); // espera hasta que el elemento esté visible
         driver.findElement(By.xpath(curso)).click();
     }
 
@@ -68,15 +65,8 @@ public class EditPage extends Base {
         }
     }
 
-    public boolean isNoCoursesMessageVisible() {
-        try {
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-            wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className(vacio)));
-            return driver.findElement(By.className(vacio)).isDisplayed();
-        } catch (TimeoutException e) {
-            return true;
-        } catch (NoSuchElementException e) {
-            return false;
-        }
+    public void isNoCoursesMessageVisible() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(curso)));
     }
 }

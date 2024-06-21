@@ -19,9 +19,7 @@ public class Edit {
 
     @And("El usuario tiene al menos un curso creado")
     public void elUsuarioTieneAlMenosUnCursoCreado() {
-        if (editPage.isNoCoursesMessageVisible()) {
-            throw new AssertionError("No se encontró ningún curso");
-        }
+        editPage.isNoCoursesMessageVisible();
     }
 
     @When("El usuario hace abre el curso")

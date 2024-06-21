@@ -1,4 +1,4 @@
-Feature: Verificación de campos obligatorios en la edición de cursos
+Feature: Verificación de campos obligatorios en la edición de datos de cursos
 
   Scenario: Verificar que se muestra error si el título del curso está vacío al guardar cambios
     Given El usuario ha ingresado a la pagina "https://abmodelis.github.io/#/teachers/courses"
