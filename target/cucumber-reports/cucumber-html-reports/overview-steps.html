@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.tablesorter.min.js"></script>
+<script src="js/Chart.min.js"></script>
+<script src="js/moment.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
+<link rel="stylesheet" href="css/cucumber.css" type="text/css"/>
+<link rel="stylesheet" href="css/font-awesome.min.css"/>
+<link rel="shortcut icon" href="images/favicon.png"/>
+
+<script>
+$(document).ready(function() {
+    // this will tell tablesorter to try looking for the data-value attribute
+    // if present, it'll sort by that instead
+    // otherwise, it'll sort by the text content of the table cell
+    $("#tablesorter").tablesorter({
+        textAttribute: 'data-value',
+        // ignores the first row of the header, the 'scenario', 'steps', since
+        // sorting those doesn't make sense
+        selectorHeaders: '> thead tr:not(.dont-sort) th',
+        // use a stable sort
+        sortStable: true
+    });
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<title>Cucumber Reports (no 1) - Steps Overview</title>
+
+</head>
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top" id="navigation">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse">
+      <p class="navbar-text navbar-left">Cucumber Report</p>
+      <ul class="nav navbar-nav navbar-right">
+        <li role="presentation" ><a href="overview-features.html">Features</a></li>
+        <li role="presentation" ><a href="overview-tags.html">Tags</a></li>
+        <li role="presentation"     class="active" ><a href="overview-steps.html">Steps</a></li>
+        <li role="presentation" ><a href="overview-failures.html">Failures</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<div class="container-fluid">
+  <div class="col-md-5 col-md-offset-1">
+
+<table class="table table-bordered" id="build-info">
+  <thead>
+    <tr>
+      <th>Project</th>
+        <th>Number</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="info">
+      <td>testAuto</td>
+        <td>1</td>
+      <td>30 Jun 2024, 13:11</td>
+    </tr>
+  </tbody>
+</table>
+
+  </div>
+  <div class="col-md-3 col-md-offset-2">
+  </div>
+</div>
+
+
+<div id="report-lead" class="container-fluid">
+  <div class="col-md-10 col-md-offset-1">
+    <h2>Steps Statistics</h2>
+      <p>The following graph shows step statistics for this build. Below list is based on results.
+ step does not provide information about result then is not listed below.
+ Additionally @Before and @After are not counted because they are part of the scenarios, not steps.</p>
+  </div>
+</div>
+
+<div class="container-fluid" id="report">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <table id="tablesorter" class="stats-table table-hover">
+
+        <thead>
+          <tr class="header">
+            <th>Implementation</th>
+            <th>Occurrences</th>
+            <th>Average duration</th>
+            <th>Max duration</th>
+            <th>Total durations</th>
+            <th>Ratio</th>
+          </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+              <td class="location">appHooks.Hooks.launchBrowser()</td>
+              <td>2</td>
+              <td class="duration" data-value="3124314400">3.124</td>
+              <td class="duration" data-value="3124314400">3.339</td>
+              <td class="duration" data-value="6248628800">6.248</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">appHooks.Hooks.myTearDown(io.cucumber.java.Scenario)</td>
+              <td>2</td>
+              <td class="duration" data-value="0">0.000</td>
+              <td class="duration" data-value="0">0.000</td>
+              <td class="duration" data-value="0">0.000</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">appHooks.Hooks.quitBrowser()</td>
+              <td>2</td>
+              <td class="duration" data-value="873149200">0.873</td>
+              <td class="duration" data-value="873149200">0.922</td>
+              <td class="duration" data-value="1746298400">1.746</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">stepDefinition.Edit.elSistemaMuestraUnMensajeDeError(java.lang.String)</td>
+              <td>2</td>
+              <td class="duration" data-value="52400000">0.052</td>
+              <td class="duration" data-value="52400000">0.063</td>
+              <td class="duration" data-value="104800000">0.104</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">stepDefinition.Edit.elUsuarioBorraElContenidoDelCampoDescripcion()</td>
+              <td>1</td>
+              <td class="duration" data-value="48873500">0.048</td>
+              <td class="duration" data-value="48873500">0.048</td>
+              <td class="duration" data-value="48873500">0.048</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">stepDefinition.Edit.elUsuarioBorraElContenidoDelCampoTitulo()</td>
+              <td>1</td>
+              <td class="duration" data-value="81137400">0.081</td>
+              <td class="duration" data-value="81137400">0.081</td>
+              <td class="duration" data-value="81137400">0.081</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">stepDefinition.Edit.elUsuarioHaIngresadoALaPagina(java.lang.String)</td>
+              <td>2</td>
+              <td class="duration" data-value="855946200">0.855</td>
+              <td class="duration" data-value="855946200">0.949</td>
+              <td class="duration" data-value="1711892400">1.711</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">stepDefinition.Edit.elUsuarioHaceAbreElCurso()</td>
+              <td>2</td>
+              <td class="duration" data-value="254153750">0.254</td>
+              <td class="duration" data-value="254153750">0.255</td>
+              <td class="duration" data-value="508307500">0.508</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">stepDefinition.Edit.elUsuarioHaceClickEnElBotonEditar()</td>
+              <td>2</td>
+              <td class="duration" data-value="1320669200">1.320</td>
+              <td class="duration" data-value="1320669200">1.325</td>
+              <td class="duration" data-value="2641338400">2.641</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">stepDefinition.Edit.elUsuarioHaceClickEnElBotonGuardar()</td>
+              <td>2</td>
+              <td class="duration" data-value="312084350">0.312</td>
+              <td class="duration" data-value="312084350">0.339</td>
+              <td class="duration" data-value="624168700">0.624</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">stepDefinition.Edit.elUsuarioTieneAlMenosUnCursoCreado()</td>
+              <td>2</td>
+              <td class="duration" data-value="4182948350">4.182</td>
+              <td class="duration" data-value="4182948350">4.201</td>
+              <td class="duration" data-value="8365896700">8.365</td>
+              <td class="passed">100.00%</td>
+            </tr>
+        </tbody>
+
+        <tfoot class="total">
+          <tr>
+            <td>11</td>
+            <td>20</td>
+            <td class="duration">1.104</td>
+            <td class="duration">8.365</td>
+            <td class="duration">22.081</td>
+            <td>Totals</td>
+          </tr>
+        </tfoot>
+
+      </table>
+    </div>
+  </div>
+</div>
+
+
+<nav class="navbar navbar-default" id="footer">
+  <div class="container-fluid">
+    <p class="navbar-text navbar-right">
+        <small>generate Cucumber HTML reports via:&nbsp;</small>
+        <a class="navbar-link" href="https://github.com/jenkinsci/cucumber-reports-plugin">Jenkins Plugin</a> |
+        <a class="navbar-link" href="https://github.com/damianszczepanik/cucumber-reporting">Standalone</a> |
+        <a class="navbar-link" href="https://github.com/damianszczepanik/cucumber-sandwich">Sandwich</a> |
+        <a class="navbar-link" href="https://github.com/damianszczepanik/maven-cucumber-reporting">Maven</a>
+        &nbsp;&nbsp;
+    </p>
+  </div>
+</nav>
+
+</body>
+</html>
